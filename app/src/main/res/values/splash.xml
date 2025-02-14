@@ -2,7 +2,7 @@
 <resources>
     
     <style name="Theme.InstagramClone.Starting" parent="Theme.SplashScreen">
-        <item name="windowSplashScreenBackground">#202020</item>
+        <item name="windowSplashScreenBackground">@color/white</item>
 
         <item name="windowSplashScreenAnimatedIcon">@drawable/instasplash</item>
 
