@@ -16,19 +16,35 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.luminance
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.WindowCompat
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.instagramclone.screens.ChatsScreen
 import com.example.instagramclone.screens.NewPostScreen
 import com.example.instagramclone.screens.Screen
 import com.example.instagramclone.ui.theme.InstagramCloneTheme
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        var condition = true
+        installSplashScreen().apply {
+            this.setKeepOnScreenCondition{condition}
+            lifecycleScope.launch {
+                delay(2000)
+                condition = false
+            }
+        }
+
         setContent {
+
+
+
             InstagramCloneTheme {
                 val navController = rememberNavController()
                 val currentBackStackEntry by navController.currentBackStackEntryAsState()
