@@ -14,6 +14,7 @@ data class Post(
     val description: String,
     val likes: Int,
     val comments: Int,
+    val shares: Int,
     val year: Int,
     val month: Int,
     val day: Int,
@@ -93,7 +94,7 @@ object Dummy {
         Post(
             profilePhotos[index], photos[index],
             usernames[index], descriptions[index],
-            (1..999).random(), (1..99).random(),
+            (1..999).random(), (1..99).random(), (1..999).random(),
             (2022..2025).random(), (1..12).random(), (1..28).random()
         )
     }.shuffled()
@@ -102,7 +103,7 @@ object Dummy {
         Post(
             profilePhotos[index], reelThumbnails[index],
             usernames[index], descriptions[index],
-            (1..999).random(), (1..99).random(),
+            (1..999).random(), (1..99).random(), (1..999).random(),
             (2022..2025).random(), (1..12).random(), (1..28).random()
         )
     }.shuffled()

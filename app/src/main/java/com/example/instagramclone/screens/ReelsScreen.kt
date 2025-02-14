@@ -29,8 +29,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import coil.compose.rememberAsyncImagePainter
 import com.example.instagramclone.ProfilePhoto
 import com.example.instagramclone.R
@@ -84,22 +89,46 @@ fun ReelsIcons(reel: Post){
             horizontalAlignment = Alignment.Start,
             verticalArrangement = Arrangement.Bottom,
             modifier = Modifier.fillMaxHeight()) {
-            Row {
+            Row(verticalAlignment = Alignment.CenterVertically) {
                 ProfilePhoto(0,50.dp, Dummy.profilePhotos.random())
-                Text(reel.username, color = Color.White)
                 Spacer(Modifier.width(5.dp))
+                Text(
+                    text = buildAnnotatedString {
+                        withStyle(style = SpanStyle(fontWeight = FontWeight.Bold, fontSize = 14.sp)){
+                            append(reel.username)
+                        }
+                        withStyle(style = SpanStyle(fontWeight = FontWeight.Thin, fontSize = 12.sp)){
+                            append("\n" + "Original audio")
+                        }
+                    },
+                    color = Color.White,
+                    lineHeight = 15.sp
+                )
+                Spacer(Modifier.width(15.dp))
                 MyButton  {
-                    Text("Follow", Modifier.padding(vertical = 2.dp, horizontal = 8.dp), color = Color.White)
+                    Text("Follow", Modifier.padding(vertical = 2.dp, horizontal = 15.dp), color = Color.White)
                 }
             }
             Text(reel.description, maxLines = 1, overflow = TextOverflow.Ellipsis, color = Color.White, modifier = Modifier.widthIn(max = 200.dp))
         }
-        Column(verticalArrangement = Arrangement.spacedBy(20.dp)) {
+        Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(5.dp)) {
             Icon(painterResource(R.drawable.ic_search_24),null, tint = Color.White)
             Spacer(Modifier.weight(1f))
             SelectableIcon(R.drawable.ic_heart_24, R.drawable.ic_heart_filled_24, tint = Color.Red,defaultTint = Color.White)
+            Spacer(Modifier)
+            Text(reel.likes.toString(), color = Color.White)
+            Spacer(Modifier)
+            Spacer(Modifier)
             Icon(painterResource(R.drawable.ic_comment_24),null, tint = Color.White)
+            Spacer(Modifier)
+            Text(reel.comments.toString(), color = Color.White)
+            Spacer(Modifier)
+            Spacer(Modifier)
             Icon(painterResource(R.drawable.ic_share_24),null, tint = Color.White)
+            Spacer(Modifier)
+            Text(reel.shares.toString(), color = Color.White)
+            Spacer(Modifier)
+            Spacer(Modifier)
             Icon(painterResource(R.drawable.ic_more_vert_24),null, tint = Color.White)
         }
     }
