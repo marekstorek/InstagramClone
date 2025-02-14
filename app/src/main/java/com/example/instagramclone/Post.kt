@@ -24,7 +24,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.instagramclone.data.Post
+import com.example.instagramclone.data.date
 
 @Composable
 
@@ -76,17 +78,21 @@ fun PostFooter(post: Post){
         PostFooterIconRow(post)
         Text(
             buildAnnotatedString {
-                withStyle(style = SpanStyle(fontWeight = FontWeight.Bold)){
+                withStyle(style = SpanStyle(fontWeight = FontWeight.Normal, fontSize = 15.sp)){
                     append(post.username)
                 }
-                append (" " + post.description)
+                withStyle(style = SpanStyle(fontWeight = FontWeight.Light, fontSize = 14.sp)){
+                    append (" " + post.description)
+                }
             },
             maxLines = 2,
             overflow = TextOverflow.Ellipsis,
             modifier = Modifier.padding(horizontal = 10.dp)
         )
+        Text(post.date(), modifier = Modifier.padding(horizontal = 10.dp), fontWeight = FontWeight.Thin, fontSize = 10.sp, color = Color.Gray)
     }
 }
+
 
 @Composable
 fun PostFooterIconRow(post: Post){
@@ -95,22 +101,22 @@ fun PostFooterIconRow(post: Post){
         horizontalArrangement = Arrangement.spacedBy(3.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
+        Spacer(Modifier.size(0.dp))
         SelectableIcon(R.drawable.ic_heart_24,R.drawable.ic_heart_filled_24, Color.Red)
         Spacer(Modifier.size(0.dp))
 
         Text(post.likes.toString())
-        Spacer(Modifier.size(5.dp))
+        Spacer(Modifier.size(7.dp))
 
         Icon(painterResource(R.drawable.ic_comment_24), null)
         Spacer(Modifier.size(0.dp))
 
         Text(post.comments.toString())
-        Spacer(Modifier.size(5.dp))
+        Spacer(Modifier.size(7.dp))
 
         Icon(painterResource(R.drawable.ic_share_24), null)
         Spacer(modifier = Modifier.weight(1f))
         SelectableIcon(R.drawable.ic_save_24,R.drawable.ic_save_filled_24)
-
     }
 }
 

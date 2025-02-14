@@ -1,8 +1,11 @@
 package com.example.instagramclone.data
 
+import android.icu.util.Calendar
 import androidx.annotation.DrawableRes
 import com.example.instagramclone.R
 import okhttp3.internal.immutableListOf
+import java.text.SimpleDateFormat
+import java.util.Locale
 import java.util.UUID
 import kotlin.math.min
 
@@ -20,6 +23,14 @@ data class Post(
     val day: Int,
     val id: String = UUID.randomUUID().toString()
 )
+
+fun Post.date(): String{
+    val calendar: Calendar = Calendar.getInstance()
+    calendar.set(year, month, day)
+    val formatter = SimpleDateFormat("MMMM dd, yyyy", Locale.ENGLISH)
+    val formattedDate = formatter.format(calendar.time)
+    return formattedDate
+}
 
 
 data class MyProfile(
