@@ -26,7 +26,7 @@ A UI clone of Instagram built using **Jetpack Compose**. This project replicates
 ---
 
 ## Demo 🎥
-[![App Demo](https://img.youtube.com/vi/b2miYvTycuo/0.jpg)](https://youtube.com/shorts/b2miYvTycuo?feature=share)
+<img src="screenshots/Recording.gif" alt="GIF" width="40%">
 
 ---
 
