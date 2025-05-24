@@ -80,7 +80,6 @@ fun BottomBar(navController: NavHostController, pagerState: PagerState){
                                         saveState = true
                                     }
                                     launchSingleTop = true
-                                    restoreState = true
                                 }
                             }
                         },
