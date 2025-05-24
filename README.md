@@ -17,7 +17,16 @@ A UI clone of Instagram built using **Jetpack Compose**. This project replicates
 ---
 
 ## Screenshots 📱
-TODO
+| Home Feed | Home Feed Dark | Explore Page |  Reels Page | 
+| --------- | ------------ | ---------- | ---------- | 
+| ![Home](screenshots/Feed.png) | ![Explore](screenshots/FeedDark.png) | ![Reels](screenshots/Explore.png) | ![Reels](screenshots/Reels.png) |
+| Chats Page | Chat | Story Viewer | My Profile |
+| ![Profile](screenshots/Chats.png) | ![Chats](screenshots/Chat.png) | ![Story](screenshots/Story.png) | ![Story](screenshots/MyProfile.png) |
+
+---
+
+## Demo 🎥
+[![App Demo](https://img.youtube.com/vi/b2miYvTycuo/0.jpg)](https://youtube.com/shorts/b2miYvTycuo?feature=share)
 
 ---
 
@@ -28,7 +37,6 @@ TODO
 - **Custom Composables** - Own UI components suited for this project
 - **Navigation** - Jetpack Compose Navigation
 - **Coroutines** - Asynchronous programming
-- **Immutable Lists** - Performance optimization
 
 ---
 
@@ -53,5 +61,5 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 ## Contact 📫
 For any inquiries or feedback, feel free to contact me:
-- **LinkedIn:** TODO https://linkedin.com/in/TODO
-- **Email:** TODO
+- **LinkedIn:** [Marek Storek](https://www.linkedin.com/in/marekstorek1)
+- **Email:** marek.storek1@gmail.com
