@@ -11,7 +11,6 @@ import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.luminance
@@ -25,24 +24,15 @@ import com.example.instagramclone.screens.ChatsScreen
 import com.example.instagramclone.screens.NewPostScreen
 import com.example.instagramclone.screens.Screen
 import com.example.instagramclone.ui.theme.InstagramCloneTheme
-import kotlinx.coroutines.delay
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        var condition = true
-        installSplashScreen().apply {
-            this.setKeepOnScreenCondition{condition}
-
-        }
+        installSplashScreen()
 
         setContent {
             InstagramCloneTheme {
-                LaunchedEffect(Unit) {
-                    delay(2000)
-                    condition = false
-                }
+
                 val navController = rememberNavController()
                 val currentBackStackEntry by navController.currentBackStackEntryAsState()
                 val pagerState = rememberPagerState(initialPage = 1,pageCount = {3})
@@ -59,7 +49,11 @@ class MainActivity : ComponentActivity() {
                     isAppearanceLightNavigationBars = useDarkIcons
                 }
 
-                HorizontalPager(pagerState, beyondViewportPageCount = 3, userScrollEnabled = scrollEnabled, modifier = Modifier.fillMaxSize().navigationBarsPadding().statusBarsPadding().background(MaterialTheme.colorScheme.background)) {
+                HorizontalPager(
+                    pagerState,
+                    beyondViewportPageCount = 3, userScrollEnabled = scrollEnabled,
+                    modifier = Modifier.fillMaxSize().navigationBarsPadding().statusBarsPadding().background(MaterialTheme.colorScheme.background))
+                {
                     when (it) {
                         0 -> NewPostScreen()
                         1 -> {
@@ -69,13 +63,11 @@ class MainActivity : ComponentActivity() {
                                 bottomBar = { BottomBar(navController, pagerState) },
                             ) { innerPadding ->
                                 Navigation(navController, innerPadding, pagerState)
-
                             }
                         }
                         2 -> ChatsScreen(pagerState)
                     }
                 }
-
             }
         }
     }

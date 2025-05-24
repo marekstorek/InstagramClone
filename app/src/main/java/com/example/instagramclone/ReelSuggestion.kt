@@ -15,9 +15,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
-import coil.compose.rememberAsyncImagePainter
 import com.example.instagramclone.data.Dummy
 import com.example.instagramclone.screens.Screen
 
@@ -34,7 +34,7 @@ fun ReelSuggestion(navController: NavHostController){
             items(Dummy.reels){ reel->
                 val drawable = reel.photo
                 Image(
-                    painter = rememberAsyncImagePainter(drawable),
+                    painter = painterResource(drawable),
                     null,
                     contentScale = ContentScale.Crop,
                     modifier = Modifier.width(162.dp).height(254.dp).clip(RoundedCornerShape(10.dp)).clickableNoEffect {

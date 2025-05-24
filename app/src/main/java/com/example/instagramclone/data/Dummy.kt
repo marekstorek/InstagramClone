@@ -82,6 +82,8 @@ object Dummy {
     val usernames = shuffledList.map { it.first }
     val names = shuffledList.map { it.second }
 
+
+
     private val descriptions = immutableListOf(
         "Just another day in paradise 🌴", "Chasing dreams ✨", "Adventure awaits 🚀", "Sunsets and palm trees 🌅", "Life is better with friends ❤️", "Weekend vibes 🎉", "Exploring new places 🌍", "Coffee first, then the world ☕", "Lost in the moment ⏳", "Happiness is homemade 🍰",
         "Making memories 📸", "Feeling grateful 🙏", "Living my best life 💖", "Work hard, play hard 💪", "Good times, good vibes 😎", "Just keep swimming 🐟", "Smiling through it all 😊", "Life is short, live it 🌈", "Dream big, achieve bigger 🚀"
@@ -140,6 +142,27 @@ object Dummy {
         postsGroup2.shuffled().take((0..postsGroup2.size).random())
     )
 
+    val statuses = generateStatuses()
+
+    private fun generateStatuses(): List<Int> {
+        val statuses = mutableListOf<Int>()
+        for (i in 1..names.size){
+            val status = (0..3).random()
+            statuses.add(status)
+        }
+        return statuses
+    }
+
+    val exploreScreenTypes = generateExploreScreenTypes()
+
+    private fun generateExploreScreenTypes(): List<Int>{
+        val types = mutableListOf<Int>()
+        for (i in 1..reels.size) {
+            types.add((0..1).random())
+        }
+        return types
+    }
+
     private fun createRandomMessage(): String{
         val messageType = (0..9).random()
         val words = when(messageType){
@@ -173,4 +196,6 @@ object Dummy {
 
         return messages
     }
+
+
 }

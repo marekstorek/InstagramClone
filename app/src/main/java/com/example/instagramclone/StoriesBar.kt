@@ -39,7 +39,8 @@ fun StoriesBar(){
             UserStoriesBarItem()
         }
         items(15){
-            StoriesBarItem(if (it in 0..1) 2 else if (it in 2..9) 1 else 0,onClick = {showStory = !showStory}, Dummy.profilePhotos[it % Dummy.profilePhotos.size])
+            StoriesBarItem(if (it in 0..1) 2 else if (it in 2..9) 1 else 0,onClick = {showStory = !showStory}, Dummy.profilePhotos[it % Dummy.profilePhotos.size],
+                Dummy.usernames[it % Dummy.usernames.size])
         }
         item {
             Spacer(Modifier.size(0.dp))
@@ -50,12 +51,12 @@ fun StoriesBar(){
 /**
  * Regular item in stories bar*/
 @Composable
-fun StoriesBarItem(status: Int = 0, onClick: ()->Unit = {}, @DrawableRes photo: Int){
+fun StoriesBarItem(status: Int = 0, onClick: ()->Unit = {}, @DrawableRes photo: Int, username: String){
     Column(verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.clickableNoEffect {
         onClick()
     }) {
         ProfilePhoto(status, photo = photo)
-        Text(Dummy.usernames.random(), modifier = Modifier.widthIn(max = 85.dp), fontSize = 14.sp, fontWeight = FontWeight.Normal, maxLines = 1, overflow = TextOverflow.Ellipsis)
+        Text(username, modifier = Modifier.widthIn(max = 85.dp), fontSize = 14.sp, fontWeight = FontWeight.Normal, maxLines = 1, overflow = TextOverflow.Ellipsis)
     }
 }
 

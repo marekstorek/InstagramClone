@@ -23,7 +23,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -33,7 +32,6 @@ import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import coil.compose.rememberAsyncImagePainter
 import com.example.instagramclone.R
 import com.example.instagramclone.data.Dummy
 
@@ -80,13 +78,13 @@ fun SearchScreen(){
             },
             columns = GridCells.Fixed(3)) {
 
-            items(Dummy.reels.size, key = {Dummy.reels[it % Dummy.reels.size].id }){
-                val thumbnail by rememberSaveable { mutableIntStateOf(Dummy.reels[it % Dummy.reels.size].photo) }
-                val type by rememberSaveable { mutableIntStateOf((0..1).random()) }
+            items((Dummy.reels.size / 3) * 3, key = {Dummy.reels[it % Dummy.reels.size].id }){
+                val thumbnail = Dummy.reels[it % Dummy.reels.size].photo
+                val type = Dummy.exploreScreenTypes[it % Dummy.exploreScreenTypes.size]
                 if (type == 0){
                     SearchPortraitPost(thumbnail)
                 } else {
-                    val thumbnail2 by rememberSaveable { mutableIntStateOf(Dummy.reels[(it + 10) % Dummy.reels.size].photo) }
+                    val thumbnail2 = Dummy.reels[(it + 10) % Dummy.reels.size].photo
                     SearchSquarePost(thumbnail,thumbnail2)
                 }
             }
@@ -97,7 +95,7 @@ fun SearchScreen(){
 @Composable
 fun SearchPortraitPost(@DrawableRes photo: Int){
     Image(
-        painter = rememberAsyncImagePainter(photo), null,
+        painter = painterResource(photo), null,
         Modifier.aspectRatio(1/2f).padding(1.dp),
         contentScale = ContentScale.Crop
     )
@@ -107,7 +105,7 @@ fun SearchPortraitPost(@DrawableRes photo: Int){
 fun SearchSquarePost(@DrawableRes photo: Int,@DrawableRes photo2: Int){
     Column {
         Image(
-            painter = rememberAsyncImagePainter(photo), null,
+            painter = painterResource(photo), null,
             Modifier.aspectRatio(1f).padding(1.dp),
             contentScale = ContentScale.Crop
         )

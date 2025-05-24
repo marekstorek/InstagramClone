@@ -36,7 +36,6 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import coil.compose.rememberAsyncImagePainter
 import com.example.instagramclone.ProfilePhoto
 import com.example.instagramclone.R
 import com.example.instagramclone.SelectableIcon
@@ -58,8 +57,8 @@ fun ReelsScreen(){
 @Composable
 fun Reel(reel: Post, pagerState: PagerState, page : Int){
     Box(Modifier.fillMaxSize()) {
-        Image(rememberAsyncImagePainter(reel.photo),null, Modifier.fillMaxSize(), contentScale = ContentScale.Crop)
-        ReelsIcons(reel)
+        Image(painterResource(reel.photo),null, Modifier.fillMaxSize(), contentScale = ContentScale.Crop)
+        ReelsIcons(reel, page)
         var progress by remember { mutableFloatStateOf(0f) }
         if (pagerState.currentPage == page) {
             LaunchedEffect(Unit) {
@@ -80,7 +79,7 @@ fun Reel(reel: Post, pagerState: PagerState, page : Int){
 }
 
 @Composable
-fun ReelsIcons(reel: Post){
+fun ReelsIcons(reel: Post, page: Int){
     Row(
         horizontalArrangement = Arrangement.SpaceBetween,
         modifier = Modifier.fillMaxSize().padding(20.dp)
@@ -90,7 +89,7 @@ fun ReelsIcons(reel: Post){
             verticalArrangement = Arrangement.Bottom,
             modifier = Modifier.fillMaxHeight()) {
             Row(verticalAlignment = Alignment.CenterVertically) {
-                ProfilePhoto(0,50.dp, Dummy.profilePhotos.random())
+                ProfilePhoto(0,50.dp, Dummy.profilePhotos[page % Dummy.profilePhotos.size])
                 Spacer(Modifier.width(5.dp))
                 Text(
                     text = buildAnnotatedString {

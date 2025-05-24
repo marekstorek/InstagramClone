@@ -48,7 +48,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import coil.compose.rememberAsyncImagePainter
 import com.example.instagramclone.R
 import com.example.instagramclone.UserProfilePhoto
 import com.example.instagramclone.clickableNoEffect
@@ -299,7 +298,7 @@ fun PostsRow(myReels: List<Post>){
                         continue
                     }
                     Image(
-                        painter = rememberAsyncImagePainter(myReels[3 * i + j].photo), null,
+                        painter = painterResource(myReels[3 * i + j].photo), null,
                         Modifier.weight(1f).aspectRatio(3 / 4f).padding(1.dp),
                         contentScale = ContentScale.Crop
                     )
@@ -347,7 +346,6 @@ fun MyButton(modifier: Modifier = Modifier, clickable: Boolean = false,content: 
 fun NumberAndLabel(number: Int, label: String){
     Column {
         Text(number.toString())
-        //Spacer(Modifier.height(5.dp))
         Text(label)
     }
 }

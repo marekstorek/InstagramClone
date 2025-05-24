@@ -44,7 +44,6 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
-import coil.compose.rememberAsyncImagePainter
 import com.example.instagramclone.PostHeader
 import com.example.instagramclone.R
 import com.example.instagramclone.data.Dummy
@@ -104,7 +103,7 @@ private fun StoryDialogContent(
 
     Box(modifier) {
         Image(
-            painter = rememberAsyncImagePainter(Dummy.reelThumbnails[page % Dummy.reelThumbnails.size]),
+            painter = painterResource(Dummy.reelThumbnails[page % Dummy.reelThumbnails.size]),
             null,
             contentScale = ContentScale.Crop,
             modifier = Modifier

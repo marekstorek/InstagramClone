@@ -30,11 +30,9 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -66,7 +64,11 @@ fun ChatsScreen(pagerState: PagerState) {
             NotesBar()
             MessagesAndRequestsRow()
             repeat(20){
-                ChatItem(Dummy.profilePhotos[it % Dummy.profilePhotos.size], Dummy.names[it % Dummy.names.size])
+                ChatItem(
+                    Dummy.profilePhotos[it % Dummy.profilePhotos.size],
+                    Dummy.names[it % Dummy.names.size],
+                    Dummy.statuses[it % Dummy.statuses.size]
+                )
             }
         }
     }
@@ -214,9 +216,8 @@ private fun NotesBarItem(@DrawableRes profilePhoto: Int, name: String, message: 
 }
 
 @Composable
-private fun ChatItem(@DrawableRes photo: Int, userName: String){
+private fun ChatItem(@DrawableRes photo: Int, userName: String, status: Int){
     var show by remember { mutableStateOf(false) }
-    val status by rememberSaveable { mutableIntStateOf((0..3).random()) }
     Row(
         modifier = Modifier
             .fillMaxWidth()

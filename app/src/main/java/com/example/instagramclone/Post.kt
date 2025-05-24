@@ -34,7 +34,7 @@ fun Post(post: Post){
     Column {
         val modifier = Modifier.padding(horizontal = 10.dp).padding(bottom = 5.dp)
         PostHeader(modifier = modifier, post = post)
-        Image(painterResource(post.photo), null, contentScale = ContentScale.Fit)
+        Image(painterResource(post.photo), null, contentScale = ContentScale.Crop, modifier = Modifier.fillMaxWidth())
         PostFooter(post)
         Spacer(Modifier.height(15.dp))
     }

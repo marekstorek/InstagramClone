@@ -75,7 +75,13 @@ fun BottomBar(navController: NavHostController, pagerState: PagerState){
                                     pagerState.animateScrollToPage(0, animationSpec = tween(durationMillis = 800))
                                 }
                             } else{
-                                navController.navigate(screen.route)
+                                navController.navigate(screen.route) {
+                                    popUpTo(navController.graph.startDestinationId) {
+                                        saveState = true
+                                    }
+                                    launchSingleTop = true
+                                    restoreState = true
+                                }
                             }
                         },
                         painter = painterResource(drawable),
