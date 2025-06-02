@@ -61,5 +61,5 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 ## Contact 📫
 For any inquiries or feedback, feel free to contact me:
-- **LinkedIn:** [Marek Storek](https://www.linkedin.com/in/marekstorek1)
+- **LinkedIn:** [Marek Storek](https://www.linkedin.com/in/marekstorek)
 - **Email:** marek.storek1@gmail.com
